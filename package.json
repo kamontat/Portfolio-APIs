@@ -1,0 +1,8 @@
+{
+  "name": "kcnt-info-apis",
+  "version": "0.0.0-development",
+  "description": "My Portfolio website",
+  "repository": "https://github.com/kcnt-info/apis.git",
+  "author": "Kamontat Chantrachirathumrong <kamontat_c@hotmail.com>",
+  "license": "MIT"
+}
