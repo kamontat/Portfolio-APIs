@@ -4,5 +4,17 @@
   "description": "My Portfolio website",
   "repository": "https://github.com/kcnt-info/apis.git",
   "author": "Kamontat Chantrachirathumrong <kamontat_c@hotmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@octokit/rest": "16.2.0",
+    "axios": "0.18.0"
+  },
+  "devDependencies": {
+    "apidoc": "0.17.7",
+    "netlify-lambda": "1.1.1"
+  },
+  "scripts": {
+    "start": "netlify-lambda serve apis",
+    "docs": "yarn apidoc -i apis -o docs --verbose"
+  }
 }
