@@ -3,16 +3,6 @@ const axios = require("axios");
 const { PersonalInformationLink, PersonalSocialLink } = require("../lib/link");
 const { AnalysicEvent, defaultUser, defaultUsers } = require("../lib/analysic");
 
-/**
- * @api {get} /user/:id Request User information
- * @apiName GetUser
- * @apiGroup User
- *
- * @apiParam {Number} id Users unique ID.
- *
- * @apiSuccess {String} firstname Firstname of the User.
- * @apiSuccess {String} lastname  Lastname of the User.
- */
 exports.handler = function(event, _, callback) {
   const result = AnalysicEvent(event, defaultUser, defaultUsers, "information", ["information", "social"]);
   console.log(result);
@@ -27,7 +17,11 @@ exports.handler = function(event, _, callback) {
     .then(result => {
       callback(undefined, {
         statusCode: 200,
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Headers": "*"
+        },
         body: JSON.stringify(result.data)
       });
     })

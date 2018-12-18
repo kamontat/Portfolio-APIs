@@ -1,6 +1,6 @@
 {
   "name": "kcnt-info-apis",
-  "version": "0.0.0-development",
+  "version": "1.0.0",
   "description": "My Portfolio website",
   "repository": "https://github.com/kcnt-info/apis.git",
   "author": "Kamontat Chantrachirathumrong <kamontat_c@hotmail.com>",
@@ -18,5 +18,11 @@
     "build": "netlify-lambda build apis",
     "docs": "apidoc -i apis -o docs --verbose",
     "deploy": "yarn docs && yarn build"
+  },
+  "apidoc": {
+    "title": "kcnt content APIs",
+    "description": "This is a content APIs",
+    "url": "https://apis.kcnt.info/.netlify/functions",
+    "sampleUrl": "https://apis.kcnt.info/.netlify/functions"
   }
 }

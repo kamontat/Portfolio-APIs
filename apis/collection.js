@@ -42,7 +42,11 @@ exports.handler = function(event, context, callback) {
     .then(v => {
       callback(undefined, {
         statusCode: 200,
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Headers": "*"
+        },
         body: JSON.stringify(v)
       });
     })
