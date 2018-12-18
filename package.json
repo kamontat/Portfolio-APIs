@@ -15,6 +15,8 @@
   },
   "scripts": {
     "start": "netlify-lambda serve apis",
-    "docs": "yarn apidoc -i apis -o docs --verbose"
+    "build": "netlify-lambda build apis",
+    "docs": "apidoc -i apis -o docs --verbose",
+    "deploy": "yarn docs && yarn build"
   }
 }
