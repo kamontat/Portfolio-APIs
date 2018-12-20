@@ -1,7 +1,7 @@
 const axios = require("axios");
 
-const { PersonalInformationLink, PersonalSocialLink } = require("../lib/link");
-const { AnalysicEvent, defaultUser, defaultUsers } = require("../lib/analysic");
+const { PersonalInformationLink, PersonalSocialLink } = require("../../lib/link");
+const { AnalysicEvent, defaultUser, defaultUsers } = require("../../lib/analysic");
 
 exports.handler = function(event, _, callback) {
   const result = AnalysicEvent(event, defaultUser, defaultUsers, "information", ["information", "social"]);

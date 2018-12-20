@@ -2,8 +2,8 @@
 const Octokit = require("@octokit/rest");
 
 // const { PersonalInformationLink, PersonalSocialLink } = require("../lib/link");
-const { AnalysicEvent, defaultUser, defaultUsers } = require("../lib/analysic");
-const { QueryContent, TransformResult, MultipleQueryResult } = require("../lib/content");
+const { AnalysicEvent, defaultUser, defaultUsers } = require("../../lib/analysic");
+const { QueryContent, TransformResult, MultipleQueryResult } = require("../../lib/content");
 
 const query = async (octokit, key, user) => {
   const raw = await QueryContent(octokit, user, key);

@@ -14,9 +14,9 @@
     "netlify-lambda": "1.1.1"
   },
   "scripts": {
-    "start": "netlify-lambda serve apis",
-    "build": "netlify-lambda build apis",
-    "docs": "apidoc -i apis -o docs --verbose",
+    "start": "netlify-lambda serve src/apis",
+    "build": "netlify-lambda build src/apis",
+    "docs": "apidoc -i src/docs -o docs --verbose",
     "deploy": "yarn docs && yarn build"
   },
   "apidoc": {
