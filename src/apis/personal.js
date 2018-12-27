@@ -1,16 +1,30 @@
 const axios = require("axios");
 
-const { PersonalInformationLink, PersonalSocialLink } = require("../../lib/link");
-const { AnalysicEvent, defaultUser, defaultUsers } = require("../../lib/analysic");
+const {
+  ParseParameters,
+  GenObj
+} = require('../../lib/parseUrl')
 
-exports.handler = function(event, _, callback) {
-  const result = AnalysicEvent(event, defaultUser, defaultUsers, "information", ["information", "social"]);
-  console.log(result);
+const {
+  PersonalInformationLink,
+  PersonalSocialLink
+} = require("../../lib/ghLink");
+
+exports.handler = function (event, _, callback) {
+  const result = ParseParameters(event,
+    GenObj("user", ["net", "prang"]),
+    GenObj("branch", ["master", "dev"]),
+    GenObj("lang", ["en", "th"]),
+    GenObj("path", ["information", "social"]));
 
   const url =
-    result.type === "social"
-      ? PersonalSocialLink(result.user, { branch: result.branch })
-      : PersonalInformationLink(result.user, { branch: result.branch });
+    result.path === "social" ?
+    PersonalSocialLink(result.user, {
+      branch: result.branch
+    }) :
+    PersonalInformationLink(result.user, {
+      branch: result.branch
+    });
 
   axios
     .get(url)

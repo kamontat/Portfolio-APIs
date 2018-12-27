@@ -1,6 +1,6 @@
 {
   "name": "kcnt-info-apis",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "My Portfolio website",
   "repository": "https://github.com/kcnt-info/apis.git",
   "author": "Kamontat Chantrachirathumrong <kamontat_c@hotmail.com>",
@@ -16,7 +16,7 @@
   "scripts": {
     "start": "netlify-lambda serve src/apis",
     "build": "netlify-lambda build src/apis",
-    "docs": "apidoc -i src/docs -o docs --verbose",
+    "docs": "apidoc -i src/docs -o docs --verbose && cp _redirects docs/_redirects",
     "deploy": "yarn docs && yarn build"
   },
   "apidoc": {
