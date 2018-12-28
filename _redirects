@@ -1,8 +1,10 @@
 
 # redirect to docs
-/ /docs 200!
+/ /docs 301
 
 # redirect netlify function path
-/* /.netlify/functions/:splat 200!
+/* /.netlify/functions/:splat 200
+
+/l/* /.netlify/functions/:splat 200!
 /latest/* /.netlify/functions/:splat 200!
 /v2/* /.netlify/functions/:splat 200!
