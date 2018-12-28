@@ -12,14 +12,14 @@
     "bluebird": "3.5.3"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "3.0.2",
+    "@semantic-release/commit-analyzer": "6.1.0",
+    "@semantic-release/git": "7.0.7",
+    "@semantic-release/github": "5.2.8",
+    "@semantic-release/release-notes-generator": "7.1.4",
     "apidoc": "0.17.7",
     "netlify-lambda": "1.1.1",
-    "@semantic-release/changelog": "3.0.1",
-    "@semantic-release/commit-analyzer": "6.1.0",
-    "@semantic-release/git": "7.0.5",
-    "@semantic-release/github": "5.2.6",
-    "@semantic-release/release-notes-generator": "7.1.4",
-    "semantic-release": "15.13.1"
+    "semantic-release": "15.13.2"
   },
   "scripts": {
     "start": "netlify-lambda serve src/apis",
