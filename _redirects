@@ -1,1 +1,4 @@
-/.netlify/functions/* /v2/:splat 200!
+# /* /.netlify/functions/:splat 200!
+
+/latest/* /.netlify/functions/:splat 200!
+/v2/* /.netlify/functions/:splat 200!
