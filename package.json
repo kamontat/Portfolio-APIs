@@ -27,7 +27,7 @@
     "docs:compile": "mkdir docs 2>/dev/null; aglio --theme-variables slate -i src/docs/index.apib -o docs/docs.html && cp _redirects docs/_redirects",
     "docs:start": "aglio --theme-variables slate -i src/docs/index.apib -o docs/docs.html -s",
     "deploy": "yarn release && yarn docs:compile && yarn build",
-    "release": "[[ $CONTEXT == \"production\" ]] && semantic-release --debug || echo \"not production\""
+    "release": "[ \"$CONTEXT\" = \"production\" ] && semantic-release --debug || echo \"not production\""
   },
   "release": {
     "plugins": [
