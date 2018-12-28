@@ -7,6 +7,7 @@
   "license": "MIT",
   "dependencies": {
     "@octokit/rest": "16.2.0",
+    "aglio": "^2.3.0",
     "axios": "0.18.0"
   },
   "devDependencies": {
@@ -16,8 +17,9 @@
   "scripts": {
     "start": "netlify-lambda serve src/apis",
     "build": "netlify-lambda build src/apis",
-    "docs": "apidoc -i src/docs -o docs --verbose && cp _redirects docs/_redirects",
-    "deploy": "yarn docs && yarn build"
+    "docs:compile": "mkdir docs 2>/dev/null; aglio --theme-variables slate -i src/docs/index.apib -o docs/index.html && cp _redirects docs/_redirects",
+    "docs:start": "aglio --theme-variables slate -i src/docs/index.apib -o docs/index.html -s",
+    "deploy": "yarn docs:compile && yarn build"
   },
   "apidoc": {
     "title": "kcnt content APIs",

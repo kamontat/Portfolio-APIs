@@ -15,10 +15,10 @@ exports.handler = function (event, _, callback) {
     GenObj("user", ["net", "prang"]),
     GenObj("branch", ["master", "dev"]),
     GenObj("lang", ["en", "th"]),
-    GenObj("path", ["information", "social"]));
+    GenObj("type", ["information", "social"]));
 
   const url =
-    result.path === "social" ?
+    result.type === "social" ?
     PersonalSocialLink(result.user, {
       branch: result.branch
     }) :

@@ -1,0 +1,208 @@
+FORMAT: 1A
+HOST: https://api.kcnt.info
+
+# KcNt APIs
+
+This APIs is for getting personal information of the website in form of `JSON`.
+
+## What is KcNt
+
+KcNt is a website for display personal information in form of portfolio to introduce someone who don't know who we are. you can go to website by this [link](https://kcnt.info)
+
+:::note
+## Basic information
+
+This APIs URI Parameters can be use in two ways.
+
+1. add a parameters in url path, on the parameters that have a set of possible choices, you can add it into the path on any order.
+2. you can also add a parameters to the url query as well.
+
+**Example:** if the path accept `branch` query with possible value is only `master` or `dev`. 
+you can make a path like `/apis/master` or `/apis/dev`, or in the query like `api?branch=master` or `api?branch=dev`.
+:::
+
+# Group Informations
+
+We seperate the information into 2 subfiles. one is `information` and another is `social`.
+
+The information will contain almost every personal information except the social account, for example **facebook**, **twitter** and so on.
+
+## Personal information [/personal/{branch}/{user}/{lang}/{type}{?branch,user,lang,type}]
+
+This APIs will able to receive every information base on your query
+
+### Get personal information [GET]
+
++ Parameters
+    + branch (optional, enum[string]) - branch to query the information
+        + Default: `master`
+        + Members
+            + `master`
+            + `dev
+    + user (optional, enum[string]) - name of the person who want to get
+        + Default: `net`
+        + Members
+            + `net`
+            + `prang`
+    + lang (optional, enum[string]) - language to query
+        + Default: `en`
+        + Members
+            + `en`
+            + `th`
+    + type (optional, enum[string]) - type of the query
+        + Default: `information`
+        + Members
+            + `information`
+            + `social`
+
++ Response 200 (application/json)
+
+        {
+          "abbreviation":"kc",
+          "picture":"/resources/images/base0137-small.jpg",
+          "name":{
+            "firstName":"Kamontat",
+            "lastName":"Chantrachirathumrong"
+          },
+          "nickname":"net",
+          "email":"kamontat_c@hotmail.com",
+          "birthday":"08-Nov-1996",
+          "location":{
+            "address":"8/32 Soi Phahon Yothin 34 Yaek 2",
+            "city":"Chatuchak",
+            "postalCode":"10900",
+            "country":"Thailand"
+          },
+          "phone":"0851811177"
+        }
+
+# Group Collections
+
+This for query a collection of perform, we have 8 type which is `educations`, `interests`, `languages`, `projects`, `references`, `skills`, `volunteers`, and `works`.
+
+## Root of collection APIs [/collection/{branch}/{user}/{lang}/{type}{?branch,user,lang,type}]
+
+### Get collections [GET]
+
+:::warning
+#### <i class="fa fa-warning"></i> Caution
+
+In case you have to query collection that more than 1 set, you have to think about the query time as well, because for now the code didn't optimize anything yet.
+:::
+
+:::warning
+#### <i class="fa fa-warning"></i> Caution 2
+
+This APIs is a wrapper of Github APIs so if you query too much Github will block your ip address, to resolve that problem please see at <https://developer.github.com/v3/#authentication>
+:::
+
++ Parameters
+    + branch (optional, enum[string]) - branch to query the information
+        + Default: `master`
+        + Members
+            + `master`
+            + `dev
+    + user (optional, enum[string]) - name of the person who want to get
+        + Default: `net`
+        + Members
+            + `net`
+            + `prang`
+    + lang (optional, enum[string]) - language to query (WIP)
+        + Default: `en`
+        + Members
+            + `en`
+            + `th`
+    + type (optional, enum[string]) - type of the query
+
+        If you add type via url path this can appear multiple times.
+
+        + Default: `projects`
+        + Members
+            + `educations`
+            + `interests`
+            + `languages`
+            + `projects`
+            + `references`
+            + `skills`
+            + `volunteers`
+            + `works`
+
++ Request with authorization
+
+    + Headers
+        Authorization: token OAUTH-TOKEN
+
++ Response 200 (application/json)
+
+        {
+          "languages":[
+            {
+              "language":"English",
+              "fluency":3
+            },
+            {
+              "language":"Chinese",
+              "fluency":2
+            },
+            {
+              "language":"Thai",
+              "fluency":1
+            }
+          ]
+        }
+
++ Response 200 (application/json)
+
+        {
+          "educations": [
+          ],
+          "languages": [
+            {  
+              "language":"English",
+              "fluency":3
+            },
+            {  
+              "language":"Chinese",
+              "fluency":2
+            },
+            {  
+              "language":"Thai",
+              "fluency":1
+            }
+          ]
+        }
+
+# Group Images
+
+## Question Collection [/questions]
+
+### List All Questions [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "question": "Favourite programming language?",
+                "published_at": "2014-11-11T08:40:51.620Z",
+                "url": "/questions/1",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "url": "/questions/1/choices/1",
+                        "votes": 2048
+                    }, {
+                        "choice": "Python",
+                        "url": "/questions/1/choices/2",
+                        "votes": 1024
+                    }, {
+                        "choice": "Objective-C",
+                        "url": "/questions/1/choices/3",
+                        "votes": 512
+                    }, {
+                        "choice": "Ruby",
+                        "url": "/questions/1/choices/4",
+                        "votes": 256
+                    }
+                ]
+            }
+        ]
