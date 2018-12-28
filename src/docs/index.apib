@@ -9,6 +9,12 @@ This APIs is for getting personal information of the website in form of `JSON`.
 
 KcNt is a website for display personal information in form of portfolio to introduce someone who don't know who we are. you can go to website by this [link](https://kcnt.info)
 
+## Endpoint
+
+1. Original endpoint is <https://apis.kcnt.info/.netlify/functions>
+2. Version base endpoint is <https://apis.kcnt.info/v2> or <https://apis.kcnt.info/v1>
+3. Latest version endpoint is <https://apis.kcnt.info> (this is default) or <https://apis.kcnt.info/latest> or <https://apis.kcnt.info/l>
+
 :::note
 ## Basic information
 
@@ -21,13 +27,19 @@ This APIs URI Parameters can be use in two ways.
 you can make a path like `/apis/master` or `/apis/dev`, or in the query like `api?branch=master` or `api?branch=dev`.
 :::
 
+:::warning 
+## Warning
+
+To use `query parameters`, you must call from <https://apis.kcnt.info/.netlify/functions/>
+:::
+
 # Group Informations
 
 We seperate the information into 2 subfiles. one is `information` and another is `social`.
 
 The information will contain almost every personal information except the social account, for example **facebook**, **twitter** and so on.
 
-## Personal information [/personal/{branch}/{user}/{lang}/{type}{?branch,user,lang,type}]
+## Personal information [/personal/{branch}/{user}/{lang}/{type}]
 
 This APIs will able to receive every information base on your query
 
@@ -80,7 +92,7 @@ This APIs will able to receive every information base on your query
 
 This for query a collection of perform, we have 8 type which is `educations`, `interests`, `languages`, `projects`, `references`, `skills`, `volunteers`, and `works`.
 
-## Root of collection APIs [/collection/{branch}/{user}/{lang}/{type}{?branch,user,lang,type}]
+## Root of collection APIs [/collection/{branch}/{user}/{lang}/{type}]
 
 ### Get collections [GET]
 
@@ -174,7 +186,7 @@ This APIs is a wrapper of Github APIs so if you query too much Github will block
 
 # Group Images
 
-## Logo collection [/logo/{branch}/{color}/{size}/{type}/{extension}{?branch,color,size,type,extension}]
+## Logo collection [/logo/{branch}/{color}/{size}/{type}/{extension}]
 
 ### get logo [GET]
 
@@ -221,7 +233,7 @@ This APIs is a wrapper of Github APIs so if you query too much Github will block
 
 # Group Repository
 
-## Current version [/version{?format}]
+## Current version [/version/{format}]
 
 ### Get current version [GET]
 
@@ -242,7 +254,7 @@ This APIs is a wrapper of Github APIs so if you query too much Github will block
 
         2.0.0
 
-## Package JSON [/package/{type}/{format}/{repo}/{branch}{?type,format,repo,branch}]
+## Package JSON [/package/{type}/{format}/{repo}/{branch}]
 
 ### Get package.json information [GET]
 
