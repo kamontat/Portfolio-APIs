@@ -16,7 +16,6 @@ exports.handler = function (event, context, callback) {
     GenObj("type", ["normal", "round"]),
     GenObj("extension", ["png", "svg"]))
 
-  console.log(result);
   const url = LogoLink(result.color, result);
 
   FetchUrl(url, {

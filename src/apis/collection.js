@@ -32,7 +32,6 @@ exports.handler = function (event, context, callback) {
       "works"
     ], ["projects"]));
 
-  console.log(result);
   const apis = new GHAPIs(event);
 
   apis.queryAll(result.type, result).then(v => {

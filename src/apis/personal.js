@@ -16,7 +16,6 @@ exports.handler = function (event, _, callback) {
     GenObj("lang", ["en", "th"]),
     GenObj("type", ["information", "social"]));
 
-  console.log(result);
   const url =
     result.type === "social" ?
     PersonalSocialLink(result.user, {

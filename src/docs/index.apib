@@ -174,7 +174,7 @@ This APIs is a wrapper of Github APIs so if you query too much Github will block
 
 # Group Images
 
-## Logo collection [/logo{branch}{color}{size}{type}{extension}{?branch,color,size,type,extension}]
+## Logo collection [/logo/{branch}/{color}/{size}/{type}/{extension}{?branch,color,size,type,extension}]
 
 ### get logo [GET]
 
@@ -183,7 +183,7 @@ This APIs is a wrapper of Github APIs so if you query too much Github will block
         + Default: `master`
         + Members
             + `master`
-            + `dev
+            + `dev`
     + color (optional, enum[string]) - color of the logo
         + Default: `primary`
         + Members
@@ -215,6 +215,100 @@ This APIs is a wrapper of Github APIs so if you query too much Github will block
             + `png`
             + `svg`
 
-+ Response 200 (application/svg)
++ Response 200 (image/svg)
 
-+ Response 200 (application/png)
++ Response 200 (image/png)
+
+# Group Repository
+
+## Current version [/version{?format}]
+
+### Get current version [GET]
+
++ Parameters
+    + format (optional, enum[string]) - format of the response
+        + Default: `json`
+        + Members
+            + `json`
+            + `text`
+
++ Response 200 (application/json)
+
+        {
+          version: "2.0.0"
+        }
+
++ Response 200 (text/plain)
+
+        2.0.0
+
+## Package JSON [/package/{type}/{format}/{repo}/{branch}{?type,format,repo,branch}]
+
+### Get package.json information [GET]
+
++ Parameters
+    + type (optional, enum[string]) - value type
+        + Default: `all`
+        + Members
+            + `all`
+            + `name`
+            + `description`
+            + `author`
+            + `version`
+            + `license`
+            + `dependencies`
+            + `devDependencies`
+            + `repository`
+            + `scripts`
+    + format (optional, enum[string]) - format of the response
+        + Default: `json`
+        + Members
+            + `json`
+            + `text`
+            + `text-head`
+    + repo (optional, enum[string]) - repository of the package.json
+        + Default: `apis`
+        + Members
+            + `apis`
+            + `docs`
+            + `web`
+    + branch (optional, enum[string]) - branch to query the information
+        + Default: `master`
+        + Members
+            + `master`
+            + `dev`
+
++ Response 200 (application/json)
+
+        {  
+          "name":"kcnt-info-apis",
+          "version":"2.0.0",
+          "description":"My Portfolio website",
+          "repository":"https://github.com/kcnt-info/apis.git",
+          "author":"Kamontat Chantrachirathumrong <kamontat_c@hotmail.com>",
+          "license":"MIT",
+          "dependencies":{  
+              "@octokit/rest":"16.2.0",
+              "aglio":"2.3.0",
+              "axios":"0.18.0",
+              "bluebird":"3.5.3"
+          },
+          "devDependencies":{  
+              "apidoc":"0.17.7",
+              "netlify-lambda":"1.1.1"
+          },
+          "scripts":{  
+              "dump-version":"git tag \"$(node ./scripts/dump-version.js)\"",
+              "start":"netlify-lambda serve src/apis",
+              "build":"netlify-lambda build src/apis",
+              "docs:compile":"mkdir docs 2>/dev/null; aglio --theme-variables slate -i src/docs/index.apib -o docs/docs.html && cp _redirects docs/_redirects && cp 404.html docs/404.html",
+              "docs:start":"aglio --theme-variables slate -i src/docs/index.apib -o docs/docs.html -s",
+              "prepush":"yarn dump-version",
+              "push":"git push && git push --tag",
+              "deploy":"yarn docs:compile && yarn build"
+          }
+        }
+
++ Response 200 (text/plain)
+
+        2.0.0

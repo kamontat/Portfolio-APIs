@@ -24,11 +24,5 @@
     "prepush": "yarn dump-version",
     "push": "git push && git push --tag",
     "deploy": "yarn docs:compile && yarn build"
-  },
-  "apidoc": {
-    "title": "kcnt content APIs",
-    "description": "This is a content APIs",
-    "url": "https://apis.kcnt.info/.netlify/functions",
-    "sampleUrl": "https://apis.kcnt.info/.netlify/functions"
   }
 }
