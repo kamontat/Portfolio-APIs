@@ -1,6 +1,6 @@
 {
   "name": "kcnt-info-apis",
-  "version": "2.1.0",
+  "version": "1.0.0",
   "description": "My Portfolio website",
   "repository": "https://github.com/kcnt-info/apis.git",
   "author": "Kamontat Chantrachirathumrong <kamontat_c@hotmail.com>",
@@ -70,7 +70,11 @@
           ],
           "parserOpts": {
             "mergePattern": "/[mM]erge (.*) #(\\d+) from (.*)$/",
-            "mergeCorrespondence": ["plain", "id", "source"]
+            "mergeCorrespondence": [
+              "plain",
+              "id",
+              "source"
+            ]
           }
         }
       ],
@@ -79,7 +83,11 @@
         {
           "parserOpts": {
             "mergePattern": "/[mM]erge (.*) #(\\d+) from (.*)$/",
-            "mergeCorrespondence": ["plain", "id", "source"]
+            "mergeCorrespondence": [
+              "plain",
+              "id",
+              "source"
+            ]
           }
         }
       ],
@@ -98,15 +106,26 @@
       [
         "@semantic-release/git",
         {
-          "assets": ["CHANGELOG.md", "package.json", "yarn.lock"],
+          "assets": [
+            "CHANGELOG.md",
+            "package.json",
+            "yarn.lock"
+          ],
           "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
         }
       ],
       [
         "@semantic-release/github",
         {
-          "labels": ["Bot: Semantic Release", "Type: Bug", "Status: In Review"],
-          "releasedLabels": ["Bot: Semantic Release", "Status: Production"]
+          "labels": [
+            "Bot: Semantic Release",
+            "Type: Bug",
+            "Status: In Review"
+          ],
+          "releasedLabels": [
+            "Bot: Semantic Release",
+            "Status: Production"
+          ]
         }
       ]
     ],
