@@ -1,11 +1,10 @@
-const axios = require("axios");
-
 const {
   ParseParameters,
   GenObj
 } = require('../../lib/parseUrl')
 
 const {
+  FetchUrl,
   PersonalInformationLink,
   PersonalSocialLink
 } = require("../../lib/ghLink");
@@ -26,9 +25,7 @@ exports.handler = function (event, _, callback) {
       branch: result.branch
     });
 
-  axios
-    .get(url)
-    .then(result => {
+  FetchUrl(url).then(result => {
       callback(undefined, {
         statusCode: 200,
         headers: {
@@ -36,7 +33,7 @@ exports.handler = function (event, _, callback) {
           "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Headers": "*"
         },
-        body: JSON.stringify(result.data)
+        body: JSON.stringify(result)
       });
     })
     .catch(callback);

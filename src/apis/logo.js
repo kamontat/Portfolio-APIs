@@ -1,11 +1,10 @@
-const axios = require("axios")
-
 const {
   ParseParameters,
   GenObj
 } = require('../../lib/parseUrl')
 
 const {
+  FetchUrl,
   LogoLink
 } = require("../../lib/ghLink");
 
@@ -13,17 +12,18 @@ exports.handler = function (event, context, callback) {
   const result = ParseParameters(event,
     GenObj("branch", ["master", "dev"]),
     GenObj("color", ["primary", "light", "dark"]),
-    GenObj("size", ["normal", "smaller", "high"]),
+    GenObj("size", ["normal", "small", "high"]),
     GenObj("type", ["normal", "round"]),
     GenObj("extension", ["png", "svg"]))
 
   const url = LogoLink(result.color, result);
 
-  axios
-    .get(url, {
-      responseType: 'arraybuffer'
-    })
-    .then(response => {
+  FetchUrl(url, {
+      axiosOptions: {
+        responseType: 'arraybuffer'
+      },
+      all: true
+    }).then(response => {
       let image = Buffer.from(response.data, 'binary').toString('base64')
 
       callback(undefined, {

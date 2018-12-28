@@ -114,7 +114,7 @@ This APIs is a wrapper of Github APIs so if you query too much Github will block
             + `th`
     + type (optional, enum[string]) - type of the query
 
-        If you add type via url path this can appear multiple times.
+        This `type` can appear multiple times
 
         + Default: `projects`
         + Members
@@ -129,8 +129,8 @@ This APIs is a wrapper of Github APIs so if you query too much Github will block
 
 + Request with authorization
 
-    + Headers
-        Authorization: token OAUTH-TOKEN
+        + Headers
+            Authorization: token OAUTH-TOKEN
 
 + Response 200 (application/json)
 
@@ -174,35 +174,47 @@ This APIs is a wrapper of Github APIs so if you query too much Github will block
 
 # Group Images
 
-## Question Collection [/questions]
+## Logo collection [/logo{branch}{color}{size}{type}{extension}{?branch,color,size,type,extension}]
 
-### List All Questions [GET]
+### get logo [GET]
 
-+ Response 200 (application/json)
++ Parameters
+    + branch (optional, enum[string]) - branch to query the information
+        + Default: `master`
+        + Members
+            + `master`
+            + `dev
+    + color (optional, enum[string]) - color of the logo
+        + Default: `primary`
+        + Members
+            + `primary`
+            + `light`
+            + `dark`
+    + size (optional, enum[string]) - size of the logo
 
-        [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2014-11-11T08:40:51.620Z",
-                "url": "/questions/1",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "url": "/questions/1/choices/1",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "url": "/questions/1/choices/2",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "url": "/questions/1/choices/3",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "url": "/questions/1/choices/4",
-                        "votes": 256
-                    }
-                ]
-            }
-        ]
+        Normal is mean `512×512`
+        Smaller is `256x256`
+        High is mean high resolution at `300ppi` in `512x512`
+
+        + Default: `normal`
+        + Members
+            + `normal`
+            + `small`
+            + `high`
+    + type (optional, enum[string]) - type of the logo
+        + Default: `normal`
+        + Members
+            + `normal`
+            + `round`
+    + extension (optional, enum[string]) - extension
+
+        If you enter svg, `size` will be ignore since svg don't have size
+
+        + Default: `png`
+        + Members
+            + `png`
+            + `svg`
+
++ Response 200 (application/svg)
+
++ Response 200 (application/png)
