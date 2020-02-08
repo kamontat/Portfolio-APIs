@@ -6,20 +6,20 @@
   "author": "Kamontat Chantrachirathumrong <kamontat_c@hotmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@octokit/rest": "16.2.0",
+    "@octokit/rest": "16.43.1",
     "aglio": "2.3.0",
     "axios": "0.18.0",
-    "bluebird": "3.5.3"
+    "bluebird": "3.7.2"
   },
   "devDependencies": {
-    "@semantic-release/changelog": "3.0.2",
-    "@semantic-release/commit-analyzer": "6.1.0",
-    "@semantic-release/git": "7.0.7",
-    "@semantic-release/github": "5.2.8",
-    "@semantic-release/release-notes-generator": "7.1.4",
-    "apidoc": "0.17.7",
-    "netlify-lambda": "1.1.1",
-    "semantic-release": "15.13.2"
+    "@semantic-release/changelog": "3.0.6",
+    "@semantic-release/commit-analyzer": "6.3.3",
+    "@semantic-release/git": "7.0.18",
+    "@semantic-release/github": "5.5.8",
+    "@semantic-release/release-notes-generator": "7.3.5",
+    "apidoc": "0.20.0",
+    "netlify-lambda": "1.6.3",
+    "semantic-release": "15.14.0"
   },
   "scripts": {
     "start": "netlify-lambda serve src/apis",
