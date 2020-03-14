@@ -6,7 +6,7 @@
   "author": "Kamontat Chantrachirathumrong <kamontat_c@hotmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@octokit/rest": "16.2.0",
+    "@octokit/rest": "17.1.0",
     "aglio": "2.3.0",
     "axios": "0.18.0",
     "bluebird": "3.5.3"
